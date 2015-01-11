@@ -2,6 +2,8 @@ default["apache"]["sites"]["jk1"] = {"title" => "welcomd tto jk1",  "port" => 80
 default["apache"]["sites"]["jk2"] = {"title" => "welcome to jk2",  "port" => 80, "domain" => "jk2.iroid.com" }
 default["apache"]["sites"]["jk3"] = {"title" => "welcome to jk3", "port" => 80, "domain" => "jk3.iroid.com" }
 
+default["author"]["name"] = "jk"
+
 case node["platform"]
 	when "centos"
 		default["apache"]["package"] = "httpd"

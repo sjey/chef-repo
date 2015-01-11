@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 if node["platform"] == "ubuntu"
-	execute "apt get update -y" do
+	execute "apt-get update -y" do
 	end
 end
 package "apache2" do
@@ -21,7 +21,7 @@ node["apache"]["sites"].each do |sitename, data|
 		recursive true
         end
 	if node["platform"] == "ubuntu"
-		template_location = "/etc/apache2/sites.enabled/#{sitename}.conf"
+		template_location = "/etc/apache2/sites-enabled/#{sitename}.conf"
 	elsif node["platform"] == "centos"
 		template_location = "/etc/httpd/conf.d/#{sitename}.conf"
 	end
@@ -40,7 +40,8 @@ node["apache"]["sites"].each do |sitename, data|
 		mode "0644"
 		variables ({
 			:title => data["title"],
-			:comingsoon => "coming soon"
+			:comingsoon => "coming soon",
+			:author_name => node["author"]["name"]
 		})
 	end
 end

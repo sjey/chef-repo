@@ -8,7 +8,7 @@
 #
 #
 package "php" do
-	action :install
+	package_name node["php"]["package"]
 end
 cookbook_file "/etc/php.ini" do
 	source "php.ini"
